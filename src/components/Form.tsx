@@ -1,9 +1,9 @@
-import { StepBar } from "./StepBar";
+import { ProgressBar } from "./ProgressBar";
 
 export const Form = () => {
   return (
     <div className="formContainer">
-      <StepBar />
+      <ProgressBar />
     </div>
   );
 };
