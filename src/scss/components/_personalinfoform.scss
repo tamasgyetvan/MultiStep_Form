@@ -1,0 +1,42 @@
+@use "../base";
+
+
+.personalInfoForm {
+    padding: 5rem 6rem 6rem 8rem;
+    .formTitle {
+        font-size: 3rem;
+        font-family: "Ubuntu";
+        color: base.$marineBlue;
+        font-weight: 700;
+        margin-bottom: 15px;
+        
+    }
+
+    .formDescription {
+        font-size: 1.5rem;
+        font-family: "Ubuntu";
+        color: base.$coolGray !important;
+        margin-bottom: 30px;
+    }
+
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 1.5rem;
+        font-family: "Ubuntu";
+        color: base.$marineBlue;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+
+            input {
+                height: 35px;
+                border: 1px solid base.$lightGray;
+                border-radius: 5px;
+            }
+        }
+    }
+}

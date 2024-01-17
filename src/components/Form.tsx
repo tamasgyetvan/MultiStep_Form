@@ -1,6 +1,7 @@
 import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
 import { useState } from "react";
+import { PersonalInfoForm } from "./PersonalInfoForm";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -14,15 +15,16 @@ export const Form = () => {
     setCurrentStep(currentStep - 1);
   }
   return (
-    <div className="formContainer">
+    <div className="multiStepForm">
       <ProgressBar />
-      <form>
+      <div className="formContainer">
+        <PersonalInfoForm />
         <ButtonBar
           currentStep={currentStep}
           incrementStep={incrementStep}
           decrementStep={decrementStep}
         />
-      </form>
+      </div>
     </div>
   );
 };
