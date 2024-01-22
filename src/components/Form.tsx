@@ -16,7 +16,7 @@ export const Form = () => {
   }
   return (
     <div className="multiStepForm">
-      <ProgressBar />
+      <ProgressBar currentStep={currentStep} />
       <div className="formContainer">
         <PersonalInfoForm />
         <ButtonBar
