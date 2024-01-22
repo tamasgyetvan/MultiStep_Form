@@ -1,39 +1,32 @@
 @use "../base";
 
 .buttonBar {
-    background-color: red;
-    .nextButton, .confirmButton {
-        border: none;
-        border-radius: 5px;
-        background-color: base.$marineBlue;
-        font-family: "Ubuntu";
-        font-weight: 700;
-        color: white;
-        padding: 12px 20px 12px 20px;
-    }
+  .nextButton,
+  .confirmButton,
+  .backButton {
+    border: none;
+    border-radius: 5px;
+    font-family: "Ubuntu";
+    font-weight: 700;
+    color: white;
+    padding: 12px 20px 12px 20px;
+    position: absolute;
+    right: 90px;
+    bottom: 50px;
+    width: 105px;
+  }
 
-    .nextButton {
-        position: absolute;
-        right: 90px;
-        bottom: 50px;
-    }
+  .nextButton {
+    background-color: base.$marineBlue;
+  }
 
-    .confirmButton {
-        background-color: base.$purplishBlue;
-        position: absolute;
-        right: 90px;
-        bottom: 50px;
-    }
+  .confirmButton {
+    background-color: base.$purplishBlue;
+  }
 
-    .backButton {
-        border: none;
-        background: none;
-        color: base.$coolGray !important;
-        padding: 12px 20px 12px 20px;
-        font-family: "Ubuntu";
-        font-weight: 700;
-        position: absolute;
-        left: 90px;
-        bottom: 50px;
-    }
+  .backButton {
+    background: none;
+    color: base.$coolGray !important;
+    left: 90px;
+  }
 }
