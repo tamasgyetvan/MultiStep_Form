@@ -16,8 +16,10 @@ export const PersonalInfoInputs = ({
         Please provide your name, email address, and phone number.
       </p>
       <label>
-        {errors.name && <p>{`${errors.name.message}`}</p>}
-        Name
+        <div>
+          <span>Name</span>
+          {errors.name && <p>{`${errors.name.message}`}</p>}
+        </div>
         <input
           {...register("name", {
             required: "This field is required",
@@ -31,8 +33,10 @@ export const PersonalInfoInputs = ({
         />
       </label>
       <label>
-        {errors.email && <p>{`${errors.email.message}`}</p>}
-        Email
+        <div>
+          <span>Email</span>
+          {errors.email && <p>{`${errors.email.message}`}</p>}
+        </div>
         <input
           {...register("email", {
             required: "This field is required",
@@ -46,8 +50,10 @@ export const PersonalInfoInputs = ({
         />
       </label>
       <label>
-        {errors.phone && <p>{`${errors.phone.message}`}</p>}
-        Phone
+        <div>
+          <span>Phone</span>
+          {errors.phone && <p>{`${errors.phone.message}`}</p>}
+        </div>
         <input
           {...register("phone", {
             required: "This field is required",

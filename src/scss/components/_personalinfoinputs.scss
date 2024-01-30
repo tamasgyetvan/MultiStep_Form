@@ -5,6 +5,7 @@
   font-family: "Ubuntu";
   color: base.$marineBlue;
   padding: 50px;
+  position: relative;
 
   .formTitle {
     font-size: 3rem;
@@ -23,6 +24,17 @@
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 20px;
+    position: inherit;
+    div {
+      display: flex;
+      flex-direction: row;
+
+      p {
+        color: base.$strawberryRed;
+        position: absolute;
+        right: 0;
+      }
+    }
 
     input {
       height: 40px;
