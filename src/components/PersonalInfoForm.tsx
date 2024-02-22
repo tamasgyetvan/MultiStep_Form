@@ -9,18 +9,18 @@ type PersonalInfoFormProps = {
   errors: FieldErrors<FieldValues>;
   register: UseFormRegister<FieldValues>;
   handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
+  onSubmit: (data: any) => void;
 };
 
 export const PersonalInfoForm = ({
   errors,
   register,
   handleSubmit,
+  onSubmit,
 }: PersonalInfoFormProps) => {
   return (
     <form
-      onSubmit={handleSubmit((data) => {
-        console.log(data);
-      })}
+      onSubmit={handleSubmit(onSubmit)}
       className="personalInfoForm"
       id="personal"
     >
