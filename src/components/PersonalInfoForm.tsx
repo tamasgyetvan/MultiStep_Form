@@ -1,16 +1,29 @@
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+  UseFormHandleSubmit,
+} from "react-hook-form";
 
-type PersonalInfoInputProps = {
+type PersonalInfoFormProps = {
   errors: FieldErrors<FieldValues>;
   register: UseFormRegister<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
 };
 
-export const PersonalInfoInputs = ({
+export const PersonalInfoForm = ({
   errors,
   register,
-}: PersonalInfoInputProps) => {
+  handleSubmit,
+}: PersonalInfoFormProps) => {
   return (
-    <>
+    <form
+      onSubmit={handleSubmit((data) => {
+        console.log(data);
+      })}
+      className="personalInfoForm"
+      id="personal"
+    >
       <h1 className="formTitle">Personal info</h1>
       <p className="formDescription">
         Please provide your name, email address, and phone number.
@@ -66,6 +79,6 @@ export const PersonalInfoInputs = ({
           name="phone"
         />
       </label>
-    </>
+    </form>
   );
 };

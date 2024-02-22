@@ -18,7 +18,12 @@ export const ButtonBar = ({
           </button>
         ) : null}
         {currentStep !== 4 ? (
-          <button className="nextButton" onClick={incrementStep}>
+          <button
+            type="submit"
+            form="personal"
+            className="nextButton"
+            onClick={incrementStep}
+          >
             Next step
           </button>
         ) : (
