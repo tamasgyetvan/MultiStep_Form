@@ -1,10 +1,21 @@
 import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import { PlanForm } from "./PlanForm";
+import { PlanType } from "../types/plan";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>(null);
+
+  function handlePlanSelect(e: any) {
+    setSelectedPlan(e.target.value);
+  }
+
+  useEffect(() => {
+    console.log(selectedPlan);
+  });
   const {
     register,
     handleSubmit,
@@ -14,12 +25,19 @@ export const Form = () => {
   return (
     <div className="multiStepForm">
       <ProgressBar currentStep={currentStep} />
-      <PersonalInfoForm
-        register={register}
-        errors={errors}
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-      />
+      {currentStep == 1 ? (
+        <PersonalInfoForm
+          register={register}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+        />
+      ) : currentStep == 2 ? (
+        <PlanForm handleClick={handlePlanSelect} selectedPlan={selectedPlan} />
+      ) : (
+        <p>Step3</p>
+      )}
+
       <ButtonBar
         currentStep={currentStep}
         incrementStep={() => {

@@ -1,0 +1,64 @@
+@use "../base";
+
+.planForm {
+  font-size: 1.5rem;
+  font-family: "Ubuntu";
+  color: base.$marineBlue;
+  padding: 50px 80px 50px 80px;
+  position: relative;
+
+  .formTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .formDescription {
+    font-size: 1.5rem;
+    color: base.$coolGray;
+    margin-bottom: 30px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 30%;
+      height: 160px;
+      padding: 10px;
+      border: 1.5px solid base.$lightGray;
+      background: none;
+      border-radius: 5px;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        h3 {
+          color: base.$marineBlue;
+          font-weight: 700;
+        }
+
+        p {
+          color: base.$coolGray;
+        }
+      }
+
+      &:hover {
+        border: 2px solid base.$pastelBlue;
+      }
+    }
+
+    .active {
+      border: 2px solid base.$pastelBlue;
+      background-color: base.$magnolia;
+    }
+  }
+}

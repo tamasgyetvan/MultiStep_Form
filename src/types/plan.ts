@@ -1,0 +1,1 @@
+export type PlanType = "arcade" | "advanced" | "pro" | null;
