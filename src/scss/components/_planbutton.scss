@@ -1,0 +1,46 @@
+@use "../base";
+
+.planButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 30%;
+  height: 160px;
+  padding: 10px;
+  border: 1.5px solid base.$lightGray;
+  background: none;
+  border-radius: 5px;
+
+  button > * {
+    pointer-events: none;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h3 {
+      color: base.$marineBlue;
+      font-weight: 700;
+    }
+
+    p {
+      color: base.$coolGray;
+    }
+
+    p:last-child {
+      color: base.$marineBlue;
+    }
+  }
+
+  &:hover {
+    border: 2px solid base.$pastelBlue;
+  }
+}
+
+.active {
+  border: 2px solid base.$pastelBlue;
+  background-color: base.$magnolia;
+}
