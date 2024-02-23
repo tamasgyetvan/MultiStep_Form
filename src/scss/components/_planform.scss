@@ -36,6 +36,9 @@
       background: none;
       border-radius: 5px;
 
+      button > * {
+        pointer-events: none;
+      }
       .info {
         display: flex;
         flex-direction: column;

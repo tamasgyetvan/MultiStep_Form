@@ -1,1 +1,8 @@
-export type PlanType = "arcade" | "advanced" | "pro" | null;
+export type PlanType = "arcade" | "advanced" | "pro" | undefined;
+
+export type PlanObject = {
+    id: number,
+    type: string,
+    price: number,
+    logo: string
+}

@@ -1,21 +1,18 @@
 import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { PlanForm } from "./PlanForm";
 import { PlanType } from "../types/plan";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>(null);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>(undefined);
 
-  function handlePlanSelect(e: any) {
-    setSelectedPlan(e.target.value);
+  function handlePlanSelect(e: React.MouseEvent<HTMLButtonElement>) {
+    setSelectedPlan(e.currentTarget.value as PlanType);
   }
 
-  useEffect(() => {
-    console.log(selectedPlan);
-  });
   const {
     register,
     handleSubmit,
