@@ -5,6 +5,7 @@ import { PersonalInfoForm } from "./PersonalInfoForm";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { PlanForm } from "./PlanForm";
 import { PlanType } from "../types/plan";
+import { AddOnForm } from "./AddOnForm";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState<PlanType>("Arcade");
@@ -32,7 +33,7 @@ export const Form = () => {
       ) : currentStep == 2 ? (
         <PlanForm handleClick={handlePlanSelect} selectedPlan={selectedPlan} />
       ) : (
-        <p>Step3</p>
+        <AddOnForm />
       )}
 
       <ButtonBar
