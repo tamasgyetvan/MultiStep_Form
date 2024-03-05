@@ -7,7 +7,7 @@ import { PlanForm } from "./PlanForm";
 import { PlanType } from "../types/plan";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>(undefined);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>("Arcade");
 
   function handlePlanSelect(e: React.MouseEvent<HTMLButtonElement>) {
     setSelectedPlan(e.currentTarget.value as PlanType);
