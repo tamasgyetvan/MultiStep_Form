@@ -10,19 +10,14 @@ type PlanFormProps = {
 
 type Mode = "yearly" | "monthly";
 export function PlanForm({ handleClick, selectedPlan }: PlanFormProps) {
-  const [mode, setMode] = useState<Mode>("monthly");
+  const [billingMethod, setBillingMethod] = useState<Mode>("monthly");
 
-  function handleModeChange(e: React.ChangeEvent) {
-    if (mode == "monthly") {
-      setMode("yearly");
-    } else {
-      setMode("monthly");
-    }
+  function handleModeChange() {
+    billingMethod === "monthly"
+      ? setBillingMethod("yearly")
+      : setBillingMethod("monthly");
   }
 
-  useEffect(() => {
-    console.log(mode);
-  });
   return (
     <section className="planForm">
       <h1 className="formTitle">Select your plan</h1>
@@ -37,7 +32,7 @@ export function PlanForm({ handleClick, selectedPlan }: PlanFormProps) {
               plan={plan}
               handleClick={handleClick}
               selectedPlan={selectedPlan}
-              mode={mode}
+              billingMethod={billingMethod}
             />
           );
         })}
