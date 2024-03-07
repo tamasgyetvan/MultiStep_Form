@@ -33,7 +33,12 @@ export const Form = () => {
       ) : currentStep == 2 ? (
         <PlanForm handleClick={handlePlanSelect} selectedPlan={selectedPlan} />
       ) : (
-        <AddOnForm />
+        <AddOnForm
+          register={register}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+        />
       )}
 
       <ButtonBar
