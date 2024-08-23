@@ -27,7 +27,12 @@ export const ButtonBar = ({
             Next step
           </button>
         ) : (
-          <button className="confirmButton" onClick={() => {}}>
+          <button
+            className="confirmButton"
+            onClick={() => {
+              console.log("Form submid");
+            }}
+          >
             Confirm
           </button>
         )}

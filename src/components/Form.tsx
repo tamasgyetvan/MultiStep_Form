@@ -2,7 +2,12 @@ import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
 import { useState } from "react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  FieldValues,
+  FormProvider,
+} from "react-hook-form";
 import { PlanForm } from "./PlanForm";
 import { PlanType } from "../types/plan";
 import { AddOnForm } from "./AddOnForm";
@@ -12,46 +17,38 @@ export const Form = () => {
 
   function handlePlanSelect(e: React.MouseEvent<HTMLButtonElement>) {
     setSelectedPlan(e.currentTarget.value as PlanType);
+    console.log(e.currentTarget.dataset.type);
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useForm();
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
-  return (
-    <div className="multiStepForm">
-      <ProgressBar currentStep={currentStep} />
-      {currentStep == 1 ? (
-        <PersonalInfoForm
-          register={register}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          onSubmit={onSubmit}
-        />
-      ) : currentStep == 2 ? (
-        <PlanForm handleClick={handlePlanSelect} selectedPlan={selectedPlan} />
-      ) : (
-        <AddOnForm
-          register={register}
-          errors={errors}
-          handleSubmit={handleSubmit}
-          onSubmit={onSubmit}
-        />
-      )}
+  const onSubmit: SubmitHandler<FieldValues> = (data) =>
+    console.log(data.name, data.email);
 
-      <ButtonBar
-        currentStep={currentStep}
-        incrementStep={() => {
-          if (isValid == true) {
-            setCurrentStep(currentStep + 1);
-          }
-        }}
-        decrementStep={() => {
-          setCurrentStep(currentStep - 1);
-        }}
-      />
-    </div>
+  const methods = useForm({ mode: "all" });
+  return (
+    <FormProvider {...methods}>
+      <form className="multiStepForm" onSubmit={methods.handleSubmit(onSubmit)}>
+        <ProgressBar currentStep={currentStep} />
+        {currentStep == 1 ? (
+          <PersonalInfoForm />
+        ) : currentStep == 2 ? (
+          <PlanForm
+            handleClick={handlePlanSelect}
+            selectedPlan={selectedPlan}
+          />
+        ) : null}
+
+        <ButtonBar
+          currentStep={currentStep}
+          incrementStep={() => {
+            if (methods.formState.isValid == true) {
+              setCurrentStep(currentStep + 1);
+            }
+          }}
+          decrementStep={() => {
+            setCurrentStep(currentStep - 1);
+          }}
+        />
+      </form>
+    </FormProvider>
   );
 };
