@@ -1,10 +1,10 @@
-import { PlanObject, PlanType } from "../types/plan";
+import { PlanObject, Plan, BillingMethod } from "../types/plan";
 
 type PlanButtonProps = {
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  selectedPlan: PlanType;
+  selectedPlan: Plan;
   plan: PlanObject;
-  billingMethod: "yearly" | "monthly";
+  billingMethod: BillingMethod;
 };
 
 export function PlanButton({
@@ -17,9 +17,11 @@ export function PlanButton({
     <button
       onClick={handleClick}
       className={
-        selectedPlan === plan.type ? "planButton active" : "planButton"
+        selectedPlan.type === plan.type ? "planButton active" : "planButton"
       }
-      value={plan.type}
+      data-type={plan.type}
+      data-price={plan.price}
+      data-billingmethod={billingMethod}
     >
       <img src={plan.logo} alt="" />
       <div className="info">

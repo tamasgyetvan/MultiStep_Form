@@ -1,6 +1,6 @@
 import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import {
   useForm,
@@ -9,19 +9,41 @@ import {
   FormProvider,
 } from "react-hook-form";
 import { PlanForm } from "./PlanForm";
-import { PlanType } from "../types/plan";
-import { AddOnForm } from "./AddOnForm";
+import { BillingMethod, Plan } from "../types/plan";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>("Arcade");
+  const [selectedPlan, setSelectedPlan] = useState<Plan>({
+    type: "Arcade",
+    price: 9,
+  });
+  const [billingMethod, setBillingMethod] = useState<BillingMethod>("monthly");
 
+  useEffect(() => console.log(selectedPlan));
   function handlePlanSelect(e: React.MouseEvent<HTMLButtonElement>) {
-    setSelectedPlan(e.currentTarget.value as PlanType);
-    console.log(e.currentTarget.dataset.type);
-  }
+    if (billingMethod == "monthly") {
+      setSelectedPlan({
+        type: e.currentTarget.dataset.type,
+        price: Number(e.currentTarget.dataset.price),
+      });
+    } else {
+      setSelectedPlan({
+        type: e.currentTarget.dataset.type,
+        price: Number(e.currentTarget.dataset.price) * 10,
+      });
+    }
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) =>
-    console.log(data.name, data.email);
+    console.log(selectedPlan);
+  }
+  function handleBillingMethodChange() {
+    if (billingMethod == "monthly") {
+      setBillingMethod("yearly");
+      setSelectedPlan((prev) => ({ ...prev, price: prev.price * 10 }));
+    } else {
+      setBillingMethod("monthly");
+      setSelectedPlan((prev) => ({ ...prev, price: prev.price / 10 }));
+    }
+  }
+  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
 
   const methods = useForm({ mode: "all" });
   return (
@@ -34,6 +56,8 @@ export const Form = () => {
           <PlanForm
             handleClick={handlePlanSelect}
             selectedPlan={selectedPlan}
+            billingMethod={billingMethod}
+            handleBillingMethodChange={handleBillingMethodChange}
           />
         ) : null}
 

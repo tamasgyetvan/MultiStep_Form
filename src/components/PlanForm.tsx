@@ -1,23 +1,20 @@
-import { PlanObject, PlanType } from "../types/plan";
+import { PlanObject, Plan, BillingMethod } from "../types/plan";
 import data from "../../data.json";
 import { PlanButton } from "./PlanButton";
-import { useEffect, useState } from "react";
 import { Toggler } from "./Toggler";
 type PlanFormProps = {
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  selectedPlan: PlanType;
+  selectedPlan: Plan;
+  billingMethod: BillingMethod;
+  handleBillingMethodChange: () => void;
 };
 
-type Mode = "yearly" | "monthly";
-export function PlanForm({ handleClick, selectedPlan }: PlanFormProps) {
-  const [billingMethod, setBillingMethod] = useState<Mode>("monthly");
-
-  function handleModeChange() {
-    billingMethod === "monthly"
-      ? setBillingMethod("yearly")
-      : setBillingMethod("monthly");
-  }
-
+export function PlanForm({
+  handleClick,
+  selectedPlan,
+  billingMethod,
+  handleBillingMethodChange,
+}: PlanFormProps) {
   return (
     <section className="planForm">
       <h1 className="formTitle">Select your plan</h1>
@@ -37,7 +34,7 @@ export function PlanForm({ handleClick, selectedPlan }: PlanFormProps) {
           );
         })}
       </div>
-      <Toggler handleChange={handleModeChange} />
+      <Toggler handleChange={handleBillingMethodChange} />
     </section>
   );
 }
