@@ -1,5 +1,5 @@
 import { PlanObject, Plan, BillingMethod } from "../types/plan";
-import data from "../../data.json";
+import data from "../data/plan.json";
 import { PlanButton } from "./PlanButton";
 import { Toggler } from "./Toggler";
 type PlanFormProps = {
