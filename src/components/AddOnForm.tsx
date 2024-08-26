@@ -1,25 +1,9 @@
-import {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-  UseFormHandleSubmit,
-} from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
-type AddonFormProps = {
-  errors: FieldErrors<FieldValues>;
-  register: UseFormRegister<FieldValues>;
-  handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
-  onSubmit: (data: any) => void;
-};
-
-export function AddOnForm({
-  errors,
-  register,
-  handleSubmit,
-  onSubmit,
-}: AddonFormProps) {
+export function AddOnForm() {
+  const { register } = useFormContext();
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="addOnForm">
+    <section className="addOnForm">
       <h1 className="formTitle">Pick add-ons</h1>
       <p className="formDescription">
         Add-ons help enhance your gaming experience.
@@ -52,7 +36,6 @@ export function AddOnForm({
         </div>
         <p className="price">$10</p>
       </label>
-      <button type="submit"></button>
-    </form>
+    </section>
   );
 }

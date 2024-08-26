@@ -10,6 +10,7 @@ import {
 } from "react-hook-form";
 import { PlanForm } from "./PlanForm";
 import { BillingMethod, Plan } from "../types/plan";
+import { AddOnForm } from "./AddOnForm";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState<Plan>({
@@ -59,6 +60,8 @@ export const Form = () => {
             billingMethod={billingMethod}
             handleBillingMethodChange={handleBillingMethodChange}
           />
+        ) : currentStep == 3 ? (
+          <AddOnForm />
         ) : null}
 
         <ButtonBar
