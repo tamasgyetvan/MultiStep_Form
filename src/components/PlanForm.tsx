@@ -34,7 +34,10 @@ export function PlanForm({
           );
         })}
       </div>
-      <Toggler handleChange={handleBillingMethodChange} />
+      <Toggler
+        handleChange={handleBillingMethodChange}
+        billingMethod={billingMethod}
+      />
     </section>
   );
 }
