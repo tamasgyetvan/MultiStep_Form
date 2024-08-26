@@ -11,6 +11,7 @@ import {
 import { PlanForm } from "./PlanForm";
 import { BillingMethod, Plan } from "../types/plan";
 import { AddOnForm } from "./AddOnForm";
+import { SummaryPage } from "./SummaryPage";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState<Plan>({
@@ -46,7 +47,7 @@ export const Form = () => {
   }
   const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
 
-  const methods = useForm({ mode: "all" });
+  const methods = useForm({ mode: "onTouched" });
   return (
     <FormProvider {...methods}>
       <form className="multiStepForm" onSubmit={methods.handleSubmit(onSubmit)}>
@@ -61,12 +62,18 @@ export const Form = () => {
             handleBillingMethodChange={handleBillingMethodChange}
           />
         ) : currentStep == 3 ? (
-          <AddOnForm />
+          <AddOnForm billingMethod={billingMethod} />
+        ) : currentStep == 4 ? (
+          <SummaryPage
+            selectedPlan={selectedPlan}
+            billingMethod={billingMethod}
+          />
         ) : null}
 
         <ButtonBar
           currentStep={currentStep}
           incrementStep={() => {
+            console.log(methods.formState.isValid);
             if (methods.formState.isValid == true) {
               setCurrentStep(currentStep + 1);
             }

@@ -1,6 +1,12 @@
 import { useFormContext } from "react-hook-form";
+import data from "../data/addon.json";
+import { Addon } from "../types/addon";
+import { BillingMethod } from "../types/plan";
 
-export function AddOnForm() {
+type AddOnFormProps = {
+  billingMethod: BillingMethod;
+};
+export function AddOnForm({ billingMethod }: AddOnFormProps) {
   const { register } = useFormContext();
   return (
     <section className="addOnForm">
@@ -8,34 +14,26 @@ export function AddOnForm() {
       <p className="formDescription">
         Add-ons help enhance your gaming experience.
       </p>
-      <label>
-        <input {...register("addons")} type="checkbox" value="Online Service" />
-        <div className="infoContainer">
-          <h3>Online service </h3>
-          <p>Access to multiplayer games</p>
-        </div>
-        <p className="price">$10</p>
-      </label>
-      <label>
-        <input {...register("addons")} type="checkbox" value="Larger Storage" />
-        <div className="infoContainer">
-          <h3>Larger storage</h3>
-          <p>Extra 1TB of cloud save</p>
-        </div>
-        <p className="price">$10</p>
-      </label>
-      <label>
-        <input
-          {...register("addons")}
-          type="checkbox"
-          value="Customizable Profile"
-        />
-        <div className="infoContainer">
-          <h3>Customizable profile</h3>
-          <p>Custom theme on your profile</p>
-        </div>
-        <p className="price">$10</p>
-      </label>
+      {data.map((addon: Addon) => {
+        return (
+          <label>
+            <input
+              {...register("addons")}
+              type="checkbox"
+              value={addon.title}
+            />
+            <div className="infoContainer">
+              <h3>{addon.title}</h3>
+              <p>{addon.text}</p>
+            </div>
+            <p className="price">
+              {billingMethod == "monthly"
+                ? `$${addon.monthlyPrice}/mo`
+                : `$${addon.yearlyPrice}/yr`}
+            </p>
+          </label>
+        );
+      })}
     </section>
   );
 }
