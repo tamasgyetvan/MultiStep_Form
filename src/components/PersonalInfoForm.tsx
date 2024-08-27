@@ -1,4 +1,4 @@
-import { SubmitHandler, useFormContext, FieldValues } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 export function PersonalInfoForm() {
   const {

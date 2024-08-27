@@ -20,7 +20,6 @@ export const Form = () => {
   });
   const [billingMethod, setBillingMethod] = useState<BillingMethod>("monthly");
 
-  useEffect(() => console.log(selectedPlan));
   function handlePlanSelect(e: React.MouseEvent<HTMLButtonElement>) {
     if (billingMethod == "monthly") {
       setSelectedPlan({
@@ -33,8 +32,6 @@ export const Form = () => {
         price: Number(e.currentTarget.dataset.price) * 10,
       });
     }
-
-    console.log(selectedPlan);
   }
   function handleBillingMethodChange() {
     if (billingMethod == "monthly") {
@@ -73,7 +70,6 @@ export const Form = () => {
         <ButtonBar
           currentStep={currentStep}
           incrementStep={() => {
-            console.log(methods.formState.isValid);
             if (methods.formState.isValid == true) {
               setCurrentStep(currentStep + 1);
             }
