@@ -9,6 +9,9 @@ export const ButtonBar = ({
   incrementStep,
   decrementStep,
 }: ButtonBarProps) => {
+  if (currentStep == 5) {
+    return null;
+  }
   return (
     <section className="buttonBar">
       <>
@@ -27,12 +30,7 @@ export const ButtonBar = ({
             Next step
           </button>
         ) : (
-          <button
-            className="confirmButton"
-            onClick={() => {
-              console.log("Form submid");
-            }}
-          >
+          <button className="confirmButton" onClick={incrementStep}>
             Confirm
           </button>
         )}

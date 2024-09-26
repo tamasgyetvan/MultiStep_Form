@@ -1,6 +1,6 @@
 import { ProgressBar } from "./ProgressBar";
 import { ButtonBar } from "./ButtonBar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PersonalInfoForm } from "./PersonalInfoForm";
 import {
   useForm,
@@ -12,6 +12,7 @@ import { PlanForm } from "./PlanForm";
 import { BillingMethod, Plan } from "../types/plan";
 import { AddOnForm } from "./AddOnForm";
 import { SummaryPage } from "./SummaryPage";
+import { ConfirmPage } from "./ConfirmPage";
 export const Form = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState<Plan>({
@@ -65,7 +66,9 @@ export const Form = () => {
             selectedPlan={selectedPlan}
             billingMethod={billingMethod}
           />
-        ) : null}
+        ) : (
+          <ConfirmPage />
+        )}
 
         <ButtonBar
           currentStep={currentStep}

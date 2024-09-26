@@ -30,7 +30,6 @@ export function SummaryPage({ selectedPlan, billingMethod }: SummaryPageProps) {
   }
 
   const totalPrice = getTotalPrice();
-  console.log("this is formvalues", formValues, selectedAddons);
   return (
     <section className="summaryPage">
       <h1 className="formTitle">Finishing-up</h1>

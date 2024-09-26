@@ -1,0 +1,25 @@
+@use "../base";
+
+.completePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 50px 80px 50px 80px;
+  font-size: 1.5rem;
+  font-family: "Ubuntu";
+  text-align: center;
+
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: base.$marineBlue;
+  }
+
+  .text {
+    color: base.$coolGray;
+    line-height: 2rem;
+  }
+}
