@@ -15,6 +15,7 @@ export function PlanButton({
 }: PlanButtonProps) {
   return (
     <button
+      type="button"
       onClick={handleClick}
       className={
         selectedPlan.type === plan.type ? "planButton active" : "planButton"

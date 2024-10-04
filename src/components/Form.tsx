@@ -45,7 +45,15 @@ export const Form = () => {
   }
   const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
 
-  const methods = useForm({ mode: "onTouched" });
+  const methods = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      addons: [],
+    },
+    mode: "all",
+  });
   return (
     <FormProvider {...methods}>
       <form className="multiStepForm" onSubmit={methods.handleSubmit(onSubmit)}>
@@ -73,9 +81,7 @@ export const Form = () => {
         <ButtonBar
           currentStep={currentStep}
           incrementStep={() => {
-            if (methods.formState.isValid == true) {
-              setCurrentStep(currentStep + 1);
-            }
+            setCurrentStep(currentStep + 1);
           }}
           decrementStep={() => {
             setCurrentStep(currentStep - 1);

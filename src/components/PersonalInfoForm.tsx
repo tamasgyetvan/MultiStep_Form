@@ -19,10 +19,10 @@ export function PersonalInfoForm() {
         </div>
         <input
           {...register("name", {
-            required: "This field is required",
+            required: true,
             minLength: {
               value: 3,
-              message: "Minimum 3",
+              message: "Name must be at least 3 characters.",
             },
           })}
           type="text"
@@ -36,13 +36,13 @@ export function PersonalInfoForm() {
         </div>
         <input
           {...register("email", {
-            required: "This field is required",
-            minLength: {
-              value: 3,
-              message: "Minimum 3",
+            required: true,
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: "Please enter a valid email address.",
             },
           })}
-          type="text"
+          type="email"
           name="email"
         />
       </label>
@@ -53,13 +53,13 @@ export function PersonalInfoForm() {
         </div>
         <input
           {...register("phone", {
-            required: "This field is required",
+            required: true,
             minLength: {
-              value: 3,
-              message: "Minimum 3",
+              value: 6,
+              message: "Phone number must be at least 6 characters.",
             },
           })}
-          type="text"
+          type="number"
           name="phone"
         />
       </label>

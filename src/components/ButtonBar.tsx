@@ -1,7 +1,9 @@
+import { useFormContext } from "react-hook-form";
+
 type ButtonBarProps = {
   currentStep: number;
-  incrementStep: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  decrementStep: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  incrementStep: () => void;
+  decrementStep: () => void;
 };
 
 export const ButtonBar = ({
@@ -12,28 +14,45 @@ export const ButtonBar = ({
   if (currentStep == 5) {
     return null;
   }
+  const { trigger } = useFormContext();
   return (
     <section className="buttonBar">
       <>
-        {currentStep !== 1 ? (
+        {currentStep != 1 ? (
           <button className="backButton" onClick={decrementStep}>
             Go back
           </button>
         ) : null}
-        {currentStep !== 4 ? (
+        {currentStep == 1 ? (
           <button
-            type="submit"
-            form="personal"
             className="nextButton"
-            onClick={incrementStep}
+            onClick={async () => {
+              const output = await trigger();
+
+              if (output == true) {
+                incrementStep();
+              }
+            }}
           >
             Next step
           </button>
-        ) : (
-          <button className="confirmButton" onClick={incrementStep}>
+        ) : currentStep == 2 ? (
+          <button type="button" className="nextButton" onClick={incrementStep}>
+            Next step
+          </button>
+        ) : currentStep == 3 ? (
+          <button type="button" className="nextButton" onClick={incrementStep}>
+            Next step
+          </button>
+        ) : currentStep == 4 ? (
+          <button
+            type="submit"
+            className="confirmButton"
+            onClick={incrementStep}
+          >
             Confirm
           </button>
-        )}
+        ) : null}
       </>
     </section>
   );
