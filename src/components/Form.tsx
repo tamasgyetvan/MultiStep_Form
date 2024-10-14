@@ -52,7 +52,7 @@ export const Form = () => {
       phone: "",
       addons: [],
     },
-    mode: "all",
+    mode: "onChange",
   });
   return (
     <FormProvider {...methods}>
