@@ -1,9 +1,11 @@
+@use "../base";
 .multiStepForm {
   width: fit-content;
   display: grid;
   grid-template-columns: 300px 600px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: relative;
+  background-color: base.$white;
   .formContainer {
     position: relative;
     display: flex;
