@@ -11,10 +11,11 @@ export const ButtonBar = ({
   incrementStep,
   decrementStep,
 }: ButtonBarProps) => {
+  const { trigger } = useFormContext();
+
   if (currentStep == 5) {
     return null;
   }
-  const { trigger } = useFormContext();
   return (
     <section className="buttonBar">
       <>
@@ -25,6 +26,7 @@ export const ButtonBar = ({
         ) : null}
         {currentStep == 1 ? (
           <button
+            type="button"
             className="nextButton"
             onClick={async () => {
               const output = await trigger();
@@ -36,11 +38,7 @@ export const ButtonBar = ({
           >
             Next step
           </button>
-        ) : currentStep == 2 ? (
-          <button type="button" className="nextButton" onClick={incrementStep}>
-            Next step
-          </button>
-        ) : currentStep == 3 ? (
+        ) : currentStep == 2 || currentStep == 3 ? (
           <button type="button" className="nextButton" onClick={incrementStep}>
             Next step
           </button>

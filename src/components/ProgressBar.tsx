@@ -5,7 +5,7 @@ type ProgressBarProps = {
 };
 export const ProgressBar = ({ currentStep }: ProgressBarProps) => {
   return (
-    <div className="progressBar">
+    <section className="progressBar">
       <Step
         stepNumber={1}
         title="Your info"
@@ -26,6 +26,6 @@ export const ProgressBar = ({ currentStep }: ProgressBarProps) => {
         title="Summary"
         active={currentStep == 4 ? true : false}
       />
-    </div>
+    </section>
   );
 };

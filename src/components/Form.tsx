@@ -14,7 +14,7 @@ import { AddOnForm } from "./AddOnForm";
 import { SummaryPage } from "./SummaryPage";
 import { ConfirmPage } from "./ConfirmPage";
 export const Form = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState<number>(1);
   const [selectedPlan, setSelectedPlan] = useState<Plan>({
     type: "Arcade",
     price: 9,
@@ -43,7 +43,6 @@ export const Form = () => {
       setSelectedPlan((prev) => ({ ...prev, price: prev.price / 10 }));
     }
   }
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
 
   const methods = useForm({
     defaultValues: {
@@ -54,6 +53,8 @@ export const Form = () => {
     },
     mode: "onChange",
   });
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data);
   return (
     <FormProvider {...methods}>
       <form className="multiStepForm" onSubmit={methods.handleSubmit(onSubmit)}>
