@@ -1,7 +1,7 @@
 .progressBar {
   box-sizing: border-box;
   width: 100%;
-  background: url("images/bg-sidebar-desktop.svg");
+  background: url("../images/bg-sidebar-desktop.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -18,7 +18,7 @@
     gap: 25px;
     height: 20vh;
 
-    background: url("images/bg-sidebar-mobile.svg");
+    background: url("../images/bg-sidebar-mobile.svg");
     background-size: cover;
     border-radius: 0;
   }

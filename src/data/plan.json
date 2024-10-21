@@ -3,18 +3,18 @@
     "id": 1,
     "type": "Arcade",
     "price": 9,
-    "logo": "public/images/icon-arcade.svg"
+    "logo": "images/icon-arcade.svg"
     },
     {
     "id": 2,
     "type": "Advanced",
     "price": 12,
-    "logo": "public/images/icon-advanced.svg"
+    "logo": "images/icon-advanced.svg"
     },
     {
     "id": 3,
     "type": "Pro",
     "price": 15,
-    "logo": "public/images/icon-pro.svg"
+    "logo": "images/icon-pro.svg"
     }
 ]
