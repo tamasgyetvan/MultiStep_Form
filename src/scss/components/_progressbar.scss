@@ -9,3 +9,17 @@
   border-radius: 15px;
   height: 600px;
 }
+
+@media screen and (max-width: 950px) {
+  .progressBar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    height: 20vh;
+
+    background: url("images/bg-sidebar-mobile.svg");
+    background-size: cover;
+    border-radius: 0;
+  }
+}

@@ -81,3 +81,13 @@
     }
   }
 }
+
+@media screen and (max-width: 950px) {
+  .summaryPage {
+    background-color: white;
+    top: -100px;
+    padding: 30px 15px 30px 15px;
+    margin: 50px 20px 50px 20px;
+    border-radius: 15px;
+  }
+}

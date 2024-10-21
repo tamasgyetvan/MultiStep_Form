@@ -30,3 +30,26 @@
     left: 355px;
   }
 }
+
+@media screen and (max-width: 950px) {
+  .buttonBar {
+    display: flex;
+    background-color: white;
+    padding: 20px;
+    margin-top: auto;
+    bottom: 0px;
+    .nextButton,
+    .confirmButton {
+      position: relative;
+      margin-left: auto;
+      right: 0px;
+      bottom: 0px;
+    }
+
+    .backButton {
+      position: relative;
+      left: 0;
+      bottom: 0;
+    }
+  }
+}

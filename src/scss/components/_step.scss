@@ -38,3 +38,12 @@
     }
   }
 }
+
+@media screen and (max-width: 950px) {
+  .step {
+    margin-bottom: 0px;
+  }
+  .infoWrapper {
+    display: none;
+  }
+}

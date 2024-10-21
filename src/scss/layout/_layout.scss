@@ -1,8 +1,18 @@
 @use "../base";
 body {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: base.$magnolia;
+}
+
+@media screen and (max-width: 950px) {
+  body {
+    display: inline;
+  }
+
+  #root {
+    height: 100dvh;
+  }
 }
